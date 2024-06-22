@@ -12,7 +12,7 @@ export async function getUser() {
         headers: {"Content-Type": "application/json", Authorization : `Bearer ${browserData.token}`}
     });
     if(!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw { message: response.statusText, status: response.status };
     }
 
     const data = await response.json();
@@ -26,7 +26,7 @@ export async function getUserOrders() {
             headers: {"Content-Type": "application/json", Authorization: `Bearer ${browserData.token}`}
     });
     if(!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw { message: response.statusText, status: response.status };
     }
     const data = await response.json();
     return data;
@@ -51,7 +51,7 @@ export async function createOrder(cartList, total, user) {
     });
 
     if(!response.ok) {
-        throw { message: response.statusText, status: response.status }
+        throw { message: response.statusText, status: response.status };
     }
     const data = await response.json();
     return data;
