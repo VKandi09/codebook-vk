@@ -6,7 +6,6 @@ import { Rating } from './Rating';
 export const ProductCard = ({product}) => {
 
     const [inCart, setInCart] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
     const { cartList, addToCart, removeFromCart } = useCart();
     const { id, name, overview, price, image_local, rating, best_seller } = product;
 
@@ -18,21 +17,20 @@ export const ProductCard = ({product}) => {
         } else {
             setInCart(false);
         }
-        setIsLoading(false);
     }, [cartList, product.id]);
 
-    if (isLoading) {
-        return (
-            <div className="m-3 w-80 bg-gray-200 rounded-lg border border-gray-300 shadow-md animate-pulse dark:bg-gray-500 dark:border-gray-400">
-                <div className="w-full h-64 bg-gray-300 rounded-t-lg"></div>
-                <div className="p-5">
-                    <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
-                    <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-                    <div className="h-4 bg-gray-300 rounded w-5/6 mb-4"></div>
-                </div>
-            </div>
-        );
-    }
+    // if (isLoading) {
+    //     return (
+    //         <div className="m-3 w-80 bg-gray-200 rounded-lg border border-gray-300 shadow-md animate-pulse dark:bg-gray-500 dark:border-gray-400">
+    //             <div className="w-full h-64 bg-gray-300 rounded-t-lg"></div>
+    //             <div className="p-5">
+    //                 <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
+    //                 <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+    //                 <div className="h-4 bg-gray-300 rounded w-5/6 mb-4"></div>
+    //             </div>
+    //         </div>
+    //     );
+    // }
     
     return (
         <div className="m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
