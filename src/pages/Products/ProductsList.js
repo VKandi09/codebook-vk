@@ -12,8 +12,6 @@ import { toast } from 'react-toastify';
 export const ProductsList = () => {
     const { products, initialProductList } = useFilter();
     const [show, setShow] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState("");
-    // const [products, setProducts] = useState([]); //removed since we are using useFilter from FilterContext
     const search = useLocation().search;
     const searchTerm = new URLSearchParams(search).get('q');
     useTitle('Explore eBooks Collection');
@@ -22,16 +20,13 @@ export const ProductsList = () => {
         async function fetchProducts() {
             try {
                 const data = await getProductList(searchTerm);
-                // setProducts(data); //removed since we using initialProductList()
                 initialProductList(data);
-                // setErrorMessage("");
             } catch(error) {
                 toast.error(error.message, {
                     position: "bottom-center",
                     autoClose: 5000,
                     closeOnClick: true,
                 });
-                // setErrorMessage(error.message);
             }
         }
         fetchProducts();
