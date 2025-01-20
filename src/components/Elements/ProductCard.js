@@ -6,11 +6,12 @@ import { Rating } from './Rating';
 export const ProductCard = ({product}) => {
 
     const [inCart, setInCart] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const { cartList, addToCart, removeFromCart } = useCart();
     const { id, name, overview, price, image_local, rating, best_seller } = product;
 
     useEffect(() => {
+        product.id ? setIsLoading(false) : setIsLoading(true);
         const productInCart = cartList.find(item => item.id === product.id);
 
         if(productInCart){
@@ -18,7 +19,6 @@ export const ProductCard = ({product}) => {
         } else {
             setInCart(false);
         }
-        setIsLoading(false);
     }, [cartList, product.id]);
 
     if (isLoading) {
