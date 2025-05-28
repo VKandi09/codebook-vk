@@ -9,8 +9,8 @@ export const FeaturedProducts = () => {
 
     useEffect(() => {
         async function fetchProducts() {
+            setIsLoading(true);
             try{
-                setIsLoading(true);
                 const data = await getFeaturedList();
                 setProducts(data);
             } catch(error) {
@@ -19,7 +19,10 @@ export const FeaturedProducts = () => {
                     autoClose: 5000,
                     closeOnClick: true,
                 });
-                setIsLoading(false);
+            } finally {
+                setTimeout(() => {
+                  setIsLoading(false);
+                }, 2000);
             }
         }
         fetchProducts();

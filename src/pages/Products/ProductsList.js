@@ -29,7 +29,6 @@ export const ProductsList = () => {
                     autoClose: 5000,
                     closeOnClick: true,
                 });
-                // setIsLoading(false);
             } finally {
                 setTimeout(() => {
                   setIsLoading(false);
